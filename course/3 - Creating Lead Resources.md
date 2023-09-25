@@ -1,4 +1,4 @@
-Next up, we need to know where did our Customer came from. So for that we will create a Lead Source Resource in filament:
+Next up, we need to know where our Customer came from. So for that, we will create a Lead Source Resource in Filament:
 
 ![](./images/leadSourceResource.png)
 
@@ -24,7 +24,7 @@ Schema::create('lead_sources', function (Blueprint $table) {
 });
 ```
 
-Then we will create a new Model for the Lead Source:
+Then, we will create a new Model for the Lead Source:
 
 **Model**
 ```php
@@ -44,9 +44,9 @@ class LeadSource extends Model
 }
 ```
 
-As you can see, we already added a relationship to our Customer Model. This will be useful later on.
+As you can see, we have already added a relationship to our Customer Model. This will be useful later on.
 
-Then we can create a seed for our Lead Source:
+Then, we can create a seed for our Lead Source:
 
 **database/seeders/DatabaseSeeder.php**
 ```php
@@ -118,7 +118,7 @@ class Customer extends Model
 }
 ```
 
-That's it, you should now have a new table `lead_sources` created with some data inside of it if you run:
+That's it. You should now have a new table `lead_sources` created with some data inside of it if you run:
 
 ```bash
 php artisan migrate:fresh --seed
@@ -130,7 +130,7 @@ php artisan migrate:fresh --seed
 
 ## Creating Lead Source Resource
 
-To create this Resource we will use the same command as before:
+To create this Resource, we will use the same command as before:
 
 ```bash
 php artisan make:filament-resource LeadSource --generate
@@ -140,7 +140,7 @@ This will once again create the necessary files for us, so all we have to do is 
 
 ![](./images/leadSourceResource.png)
 
-It seems that it loads nicely and already has the data from our database. Even the create form is working. But there's one thing we need to change:
+It loads nicely and already has the data from our database. Even the create form is working. But there's one thing we need to change:
 
 - There's no delete! - We need to have a delete button for our Lead Source, and it has to check if there are no Customers connected to it.
 
@@ -216,13 +216,13 @@ And if we try to delete a Lead Source that has Customers connected to it (for th
 
 ![](./images/leadSourceResourceDeleteButtonAddedError.png)
 
-It works! Now we can't delete a Lead Source that has Customers connected to it.
+It works! We can't delete a Lead Source with Customers connected to it.
 
 ---
 
 ## Modifying Customer Resource and Database Table - Adding Lead Source
 
-Now that we have our Lead Sources, and we can manage them, we should add a select field to our Customer Resource, so we can select a Lead Source for our Customer:
+Now that we have our Lead Sources and can manage them, we should add a select field to our Customer Resource so we can select a Lead Source for our Customer:
 
 **app/Filament/Resources/CustomerResource.php**
 ```php
@@ -248,7 +248,7 @@ This should add a select field to our Customer Resource:
 
 ![](./images/customerResourceLeadSourceSelect.png)
 
-As a last step, we need to add this field to the table, otherwise, we won't be able to see it:
+As a last step, we must add this field to the table. Otherwise, we won't be able to see it:
 
 **app/Filament/Resources/CustomerResource.php**
 ```php
@@ -280,7 +280,7 @@ public static function table(Table $table): Table
 // ...
 ```
 
-Now loading the Customer table should show us the Lead Source column:
+Now, loading the Customer table should show us the Lead Source column:
 
 ![](./images/customerResourceLeadSourceColumn.png)
 
@@ -290,11 +290,11 @@ That's it! It is this simple to add a new field to our Resource.
 
 ## Cleaning Up the Navigation - Adding Settings Dropdown
 
-Since we have introduced our Lead Sources, we should think about how we want to organize our navigation. What we have now is this:
+Since introducing our Lead Sources, we should think about how we want to organize our navigation. What we have now is this:
 
 ![](./images/navigationBefore.png)
 
-And it does not look bad, but imagine if we have 10 or 20 different Resources. It would be a mess. So let's clean it up a bit by adding a dropdown for our Settings:
+And it looks alright, but imagine if we have 10 or 20 different Resources. It would be a mess. So let's clean it up a bit by adding a dropdown for our Settings:
 
 **app/Providers/Filament/AdminPanelProvider.php**
 ```php
@@ -321,7 +321,7 @@ class AdminPanelProvider extends PanelProvider
 }
 ```
 
-This simply registers that such group can be used in our navigation, but we haven't added anything to it yet. So let's do that:
+This registers that such a group can be used in our navigation, but we haven't added anything. So let's do that:
 
 **app/Filament/Resources/LeadSourceResource.php**
 ```php
@@ -340,11 +340,11 @@ Once this is done, we should see a new dropdown in our navigation:
 
 ![](./images/navigationAfter.png)
 
-This becomes much cleaner and will give us a place to put all of our settings.
+This becomes much cleaner and will give us a place to put all our settings.
 
-### Bonus: Icon Needs to be Removed
+### Bonus: The Icon Needs to be Removed
 
-As a bonus tip, you might have noticed that we have removed the icon from our `LeadSourceResource`. This is because Filament does not support an icon on the settings dropdown and our resource. Here's what would happen if we did not delete the icon:
+As a bonus tip, you might have noticed that we have removed the icon from our `LeadSourceResource`. Filament does not support an icon on the settings dropdown and our resource. Here's what would happen if we did not delete the icon:
 
 ![](./images/navigationIconIssue.png)
 
