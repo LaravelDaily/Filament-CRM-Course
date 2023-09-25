@@ -1,4 +1,8 @@
-It's time to make our first resource - Customer. We will have the following fields in our Customer resource:
+It's time to make our first resource - Customer.
+
+![](./images/customerResourceTable.png)
+
+We will have the following fields in our Customer resource:
 
 - `id`
 - `first_name`
