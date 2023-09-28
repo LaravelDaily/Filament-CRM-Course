@@ -1,6 +1,6 @@
 It's standard for companies to mark some clients as `priority` or `VIP` via specific tags. This can be achieved by a single column on the Customers table. Still, we will try implementing a more flexible solution - Tags table.
 
-// @todo add image
+![](./images/tagsListColorView.png)
 
 Adding a specific color label will help us mark clients and make them stand out in the list. For that, we will need:
 
