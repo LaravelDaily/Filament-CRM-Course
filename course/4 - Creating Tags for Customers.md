@@ -115,7 +115,7 @@ public function tags(): BelongsToMany
 Let's create a new resource for our Tags:
 
 ```bash
-php artisan make:filament-resource Tag
+php artisan make:filament-resource Tag --generate
 ```
 
 Once all the files are created, we can visit this page in our browser:
