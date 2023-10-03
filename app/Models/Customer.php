@@ -13,6 +13,7 @@ class Customer extends Model
     use SoftDeletes;
     use HasFactory;
 
+
     protected $fillable = [
         'first_name',
         'last_name',
@@ -20,6 +21,7 @@ class Customer extends Model
         'phone_number',
         'description',
         'lead_source_id',
+        'pipeline_stage_id'
     ];
 
     public function leadSource(): BelongsTo
@@ -30,5 +32,10 @@ class Customer extends Model
     public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class);
+    }
+
+    public function pipelineStage(): BelongsTo
+    {
+        return $this->belongsTo(PipelineStage::class);
     }
 }
