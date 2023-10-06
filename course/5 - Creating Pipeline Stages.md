@@ -1,6 +1,6 @@
 Next up, each of our Customers has to go in a Pipeline to advance from one status to another. For example, we start at `Contact Made` and then progress to `Meeting Scheduled`. To do this, we need to create a new resource Pipeline Stages:
 
-![](./images/pipelineStagesResource.png)
+![](https://laraveldaily.com/uploads/2023/10/pipelineStagesResource.png)
 
 - `id`
 - `name`
@@ -169,11 +169,11 @@ php artisan migrate:fresh --seed
 
 Should now give us the default Pipeline Stages in the database:
 
-![](./images/pipelineStagesTable.png)
+![](https://laraveldaily.com/uploads/2023/10/pipelineStagesTable.png)
 
 We will see that each of our Customers has a default Pipeline Stage assigned to them:
 
-![](./images/pipelineStagesCustomer.png)
+![](https://laraveldaily.com/uploads/2023/10/pipelineStagesCustomer.png)
 
 ---
 
@@ -187,7 +187,7 @@ php artisan make:filament-resource PipelineStage --generate
 
 Once all the files are created, we can visit this page in our browser:
 
-![](./images/pipelineStagesResource.png)
+![](https://laraveldaily.com/uploads/2023/10/pipelineStagesResource.png)
 
 Next, we need to make some modifications to our resource:
 
@@ -239,7 +239,7 @@ public static function form(Form $form): Form
 
 This change will remove the unnecessary fields from our form:
 
-![](./images/pipelineStagesForm.png)
+![](https://laraveldaily.com/uploads/2023/10/pipelineStagesForm.png)
 
 But now we have a problem - how do we set the next position for our Pipeline Stage? We can do this by modifying the creation data:
 
@@ -342,15 +342,15 @@ public static function table(Table $table): Table
 
 Loading the page, we will see a new reorder button here:
 
-![](./images/pipelineStagesReorderButton.png)
+![](https://laraveldaily.com/uploads/2023/10/pipelineStagesReorderButton.png)
 
 This will open a new view where we can reorder our Pipeline Stages:
 
-![](./images/pipelineStagesReorderView.png)
+![](https://laraveldaily.com/uploads/2023/10/pipelineStagesReorderView.png)
 
 Last, we can mark a Pipeline Stage as default by clicking on the `Set Default` button:
 
-![](./images/pipelineStagesSetDefault.png)
+![](https://laraveldaily.com/uploads/2023/10/pipelineStagesSetDefault.png)
 
 That's it. At this stage, we are done with our Pipeline Stages resource.
 
@@ -389,7 +389,7 @@ public static function form(Form $form): Form
 
 This will add a new field to our form:
 
-![](./images/customerPipelineStage.png)
+![](https://laraveldaily.com/uploads/2023/10/customerPipelineStage.png)
 
 Last, we can add a new column to our table:
 
@@ -434,6 +434,6 @@ public static function table(Table $table): Table
 
 This will add a new column to our table:
 
-![](./images/customerPipelineStageColumn.png)
+![](https://laraveldaily.com/uploads/2023/10/customerPipelineStageColumn.png)
 
 That's it - our Customers can now be assigned to a Pipeline Stage.

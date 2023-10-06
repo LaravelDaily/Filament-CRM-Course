@@ -32,7 +32,7 @@ Once that is done, we can visit our project in the browser like so:
 
 `http://filament-crm-course.test/admin/login` (don't forget to change the domain to match your project's domain)
 
-![](./images/filamentLoginPage.png)
+![](https://laraveldaily.com/uploads/2023/10/filamentLoginPage.png)
 
 ---
 
@@ -82,6 +82,6 @@ php artisan migrate --seed
 
 And we should be able to log in with our admin user: (Email: `admin@admin.com`, Password: `password`)
 
-![](./images/filamentDashboard.png)
+![](https://laraveldaily.com/uploads/2023/10/filamentDashboard.png)
 
 That's it! We have Laravel and Filament configured and ready to go. In the next lesson, we will create our first Filament Resource - `Customer`.

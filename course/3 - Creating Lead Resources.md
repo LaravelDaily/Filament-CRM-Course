@@ -1,6 +1,6 @@
 Next up, we need to know where our Customer came from. So for that, we will create a Lead Source Resource in Filament:
 
-![](./images/leadSourceResource.png)
+![](https://laraveldaily.com/uploads/2023/10/leadSourceResource.png)
 
 The Lead Source Resource will have the following fields:
 
@@ -124,7 +124,7 @@ That's it. You should now have a new table `lead_sources` created with some data
 php artisan migrate:fresh --seed
 ```
 
-![](./images/leadSourcesDatabaseExample.png)
+![](https://laraveldaily.com/uploads/2023/10/leadSourcesDatabaseExample.png)
 
 ---
 
@@ -138,7 +138,7 @@ php artisan make:filament-resource LeadSource --generate
 
 This will once again create the necessary files for us, so all we have to do is load the page and see what we got:
 
-![](./images/leadSourceResource.png)
+![](https://laraveldaily.com/uploads/2023/10/leadSourceResource.png)
 
 It loads nicely and already has the data from our database. Even the create form is working. But there's one thing we need to change:
 
@@ -210,11 +210,11 @@ Let's go over the changes we made:
 
 That's it! This is how it looks in our browser:
 
-![](./images/leadSourceResourceDeleteButtonAdded.png)
+![](https://laraveldaily.com/uploads/2023/10/leadSourceResourceDeleteButtonAdded.png)
 
 And if we try to delete a Lead Source that has Customers connected to it (for this example, we did this directly in the database):
 
-![](./images/leadSourceResourceDeleteButtonAddedError.png)
+![](https://laraveldaily.com/uploads/2023/10/leadSourceResourceDeleteButtonAddedError.png)
 
 It works! We can't delete a Lead Source with Customers connected to it.
 
@@ -246,7 +246,7 @@ public static function form(Form $form): Form
 
 This should add a select field to our Customer Resource:
 
-![](./images/customerResourceLeadSourceSelect.png)
+![](https://laraveldaily.com/uploads/2023/10/customerResourceLeadSourceSelect.png)
 
 As a last step, we must add this field to the table. Otherwise, we won't be able to see it:
 
@@ -282,7 +282,7 @@ public static function table(Table $table): Table
 
 Now, loading the Customer table should show us the Lead Source column:
 
-![](./images/customerResourceLeadSourceColumn.png)
+![](https://laraveldaily.com/uploads/2023/10/customerResourceLeadSourceColumn.png)
 
 That's it! It is this simple to add a new field to our Resource.
 
@@ -292,7 +292,7 @@ That's it! It is this simple to add a new field to our Resource.
 
 Since introducing our Lead Sources, we should think about how we want to organize our navigation. What we have now is this:
 
-![](./images/navigationBefore.png)
+![](https://laraveldaily.com/uploads/2023/10/navigationBefore.png)
 
 And it looks alright, but imagine if we have 10 or 20 different Resources. It would be a mess. So let's clean it up a bit by adding a dropdown for our Settings:
 
@@ -338,7 +338,7 @@ class LeadSourceResource extends Resource
 
 Once this is done, we should see a new dropdown in our navigation:
 
-![](./images/navigationAfter.png)
+![](https://laraveldaily.com/uploads/2023/10/navigationAfter.png)
 
 This becomes much cleaner and will give us a place to put all our settings.
 
@@ -346,5 +346,5 @@ This becomes much cleaner and will give us a place to put all our settings.
 
 As a bonus tip, you might have noticed that we have removed the icon from our `LeadSourceResource`. Filament does not support an icon on the settings dropdown and our resource. Here's what would happen if we did not delete the icon:
 
-![](./images/navigationIconIssue.png)
+![](https://laraveldaily.com/uploads/2023/10/navigationIconIssue.png)
 

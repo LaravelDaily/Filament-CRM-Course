@@ -1,6 +1,6 @@
 It's standard for companies to mark some clients as `priority` or `VIP` via specific tags. This can be achieved by a single column on the Customers table. Still, we will try implementing a more flexible solution - Tags table.
 
-![](./images/tagsListColorView.png)
+![](https://laraveldaily.com/uploads/2023/10/tagsListColorView.png)
 
 Adding a specific color label will help us mark clients and make them stand out in the list. For that, we will need:
 
@@ -90,7 +90,7 @@ php artisan migrate:fresh --seed
 
 Should now give us a few tags in the database:
 
-![](./images/tagsDatabaseExample.png)
+![](https://laraveldaily.com/uploads/2023/10/tagsDatabaseExample.png)
 
 Finally, we can add a relationship to our Customer model:
 
@@ -120,11 +120,11 @@ php artisan make:filament-resource Tag --generate
 
 Once all the files are created, we can visit this page in our browser:
 
-![](./images/tagsResource.png)
+![](https://laraveldaily.com/uploads/2023/10/tagsResource.png)
 
 And we should check our Create form:
 
-![](./images/tagsCreate.png)
+![](https://laraveldaily.com/uploads/2023/10/tagsCreate.png)
 
 And while it works, we can instantly see an issue - no color picker. Let's fix that:
 
@@ -149,7 +149,7 @@ public static function form(Form $form): Form
 
 Now, if we visit our Create form, we should see a color picker:
 
-![](./images/tagsCreateColor.png)
+![](https://laraveldaily.com/uploads/2023/10/tagsCreateColor.png)
 
 And, of course, we should view that color in our list:
 
@@ -193,7 +193,7 @@ public static function table(Table $table): Table
 
 Which should give us:
 
-![](./images/tagsListColorView.png)
+![](https://laraveldaily.com/uploads/2023/10/tagsListColorView.png)
 
 Then, of course, we should secure our Tag deletion so that we don't delete a Tag that's in use:
 
@@ -255,7 +255,7 @@ class TagResource extends Resource
 
 Loading the page, we should see it in the dropdown:
 
-![](./images/tagsSettings.png)
+![](https://laraveldaily.com/uploads/2023/10/tagsSettings.png)
 
 ---
 
@@ -303,7 +303,7 @@ public static function form(Form $form): Form
 
 This should have added a multi-select field to our form that allows us to select multiple tags like this:
 
-![](./images/tagsCustomerForm.png)
+![](https://laraveldaily.com/uploads/2023/10/tagsCustomerForm.png)
 
 Next, we need to display it. But this is tricky since we need to render HTML next to our Customer name. For that, we will create a custom view:
 
@@ -362,7 +362,7 @@ $tagsList = view('customer.tagsList', ['tags' => $record->tags])->render();
 
 Here, we are loading a view with tags and calling `->render()` at the end of the line. This renders the Blade file into an HTML string that we can use in our column. By doing this and adding `->html()` to our column, we get the following result:
 
-![](./images/tagsCustomerList.png)
+![](https://laraveldaily.com/uploads/2023/10/tagsCustomerList.png)
 
 Our tags now have colors - red for `Priority` and no color for `VIP` (since we didn't specify one). 
 

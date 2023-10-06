@@ -1,6 +1,6 @@
 It's time to make our first resource - Customer.
 
-![](./images/customerResourceTable.png)
+![](https://laraveldaily.com/uploads/2023/10/customerResourceTable.png)
 
 We will have the following fields in our Customer resource:
 
@@ -122,7 +122,7 @@ php artisan migrate:fresh --seed
 
 This command should clear our database, migrate it from scratch, and seed it with our defined seeders. Once it's done, we should be able to see our customers in the database:
 
-![](./images/customerDatabaseExample.png)
+![](https://laraveldaily.com/uploads/2023/10/customerDatabaseExample.png)
 
 This should be enough for us to test our Filament resource. Let's create it!
 
@@ -138,11 +138,11 @@ php artisan make:filament-resource Customer --generate
 
 After running this command, we should see a few new files in our project:
 
-![](./images/customerResourceFiles.png)
+![](https://laraveldaily.com/uploads/2023/10/customerResourceFiles.png)
 
 These files contain all the necessary code to create a resource in Filament, meaning that we can open our browser and visit our Customers page:
 
-![](./images/customerResource.png).
+![](https://laraveldaily.com/uploads/2023/10/customerResource.png).
 
 How cool is that? We just created a model, ran a single command, and Filament generated a resource for us! But let's dive deeper into what we just created and modify some things to make it more useful:
 
@@ -238,7 +238,7 @@ class CustomerResource extends Resource
 
 But how can we modify this? Well, let's start with something simple - our Customers table has a `deleted_at` column that we want to hide:
 
-![](./images/customerResourceDeletedAtColumn.png)
+![](https://laraveldaily.com/uploads/2023/10/customerResourceDeletedAtColumn.png)
 
 To hide it, we can borrow some code from the `created_at` column like so:
 
@@ -306,7 +306,7 @@ class CustomerResource extends Resource
 
 Now, if we refresh our page, we should see that the column is hidden:
 
-![](./images/customerResourceDeletedAtColumnHidden.png)
+![](https://laraveldaily.com/uploads/2023/10/customerResourceDeletedAtColumnHidden.png)
 
 But that's not all! We still want a Full Name column in our table, not just the `first_name` and `last_name` columns. To do that, we need to create a new column, `Name` and remove the `first_name` and `last_name` columns:
 
@@ -353,22 +353,22 @@ public static function table(Table $table): Table
 
 And this is how our table looks now:
 
-![](./images/customerResourceTable.png)
+![](https://laraveldaily.com/uploads/2023/10/customerResourceTable.png)
 
 And the search also works if we search for a last name:
 
-![](./images/customerResourceTableSearch.png)
+![](https://laraveldaily.com/uploads/2023/10/customerResourceTableSearch.png)
 
 Or even if we search for a full name:
 
-![](./images/customerResourceTableSearchFullName.png)
+![](https://laraveldaily.com/uploads/2023/10/customerResourceTableSearchFullName.png)
 
 
 ### Form Modifications
 
 Next, let's check that our form is working as expected, too. Open the form and try to create a new customer:
 
-![](./images/customerResourceForm.png)
+![](https://laraveldaily.com/uploads/2023/10/customerResourceForm.png)
 
 As you can see, even if we enter a valid phone number - we still get an error. This is because we have a validation rule for our phone number field:
 
@@ -390,7 +390,7 @@ public static function form(Form $form): Form
 
 Now, once the rule is removed, we can create a new customer:
 
-![](./images/customerResourceFormSuccess.png)
+![](https://laraveldaily.com/uploads/2023/10/customerResourceFormSuccess.png)
 
 As you can see, we have successfully created a new customer! 
 
