@@ -2,6 +2,18 @@ It's standard for companies to mark some clients as `priority` or `VIP` via spec
 
 ![](https://laraveldaily.com/uploads/2023/10/tagsListColorView.png)
 
+In this lesson, we will:
+
+- Create `tags` DB structure: Model/Migration and a `belongsToMany` relationship with `customers`
+- Create Seeds with semi-real data without factories
+- Create a Filament Resource for Tags
+- Add a `ColorPicker` field to the form and a `ColorColumn` column to the table
+- Add a `DeleteAction` to the table with validation if that record is used
+- Add tags to the Customer form with `Select::make()->multiple()`
+- Add tags to the Customer table in the same column of `name` using `formatStateUsing()` and rendering a separate Blade View
+
+---
+
 Adding a specific color label will help us mark clients and make them stand out in the list. For that, we will need:
 
 - `id`

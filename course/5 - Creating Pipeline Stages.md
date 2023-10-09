@@ -2,16 +2,29 @@ Next up, each of our Customers has to go in a Pipeline to advance from one statu
 
 ![](https://laraveldaily.com/uploads/2023/10/pipelineStagesResource.png)
 
+In this lesson, we will:
+
+- Create `pipeline_stages` DB structure: Model/Migration and a `hasMany` relationship to `customers`
+- Create Seeds with semi-real data without factories
+- Create a Filament Resource for Pipeline Stages
+- Auto-assign the new position to a new Pipeline Stage
+- Make the table reorderable with the `position` field
+- Add a Custom Action `Set Default` with confirmation
+- Add a `DeleteAction` to the table with validation if that record is used
+- Add pipeline stage information to the Customer Resource table/form
+
+---
+
+## Creating Pipeline Stages Database
+
+These are the fields for our DB:
+
 - `id`
 - `name`
 - `position` - Order of the stages
 - `is_default`
 
 This will be seeded by default workflow but can be changed by admins to suit their needs.
-
----
-
-## Creating Pipeline Stages Database
 
 Let's start with our migration:
 

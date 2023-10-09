@@ -2,16 +2,25 @@ Next up, we need to know where our Customer came from. So for that, we will crea
 
 ![](https://laraveldaily.com/uploads/2023/10/leadSourceResource.png)
 
+In this lesson, we will:
+
+- Create `lead_sources` DB structure: Model/Migration and a `belongsTo` relationship with `customers`
+- Create Seeds with semi-real data without factories
+- Create a Filament Resource for Lead sources 
+- Add a `DeleteAction` to the table with validation if that record is used
+- Add lead source information to the Customer Resource table/form
+- Divide the menu into two levels: introduce Settings parent menu item
+
+---
+
+## Creating Lead Source Database
+
 The Lead Source Resource will have the following fields:
 
 - `id`
 - `name`
 
 And that's it. We want to keep it simple for now.
-
----
-
-## Creating Lead Source Database
 
 We will start by creating a new database table:
 

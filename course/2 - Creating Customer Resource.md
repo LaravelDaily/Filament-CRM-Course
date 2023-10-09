@@ -2,6 +2,16 @@ It's time to make our first resource - Customer.
 
 ![](https://laraveldaily.com/uploads/2023/10/customerResourceTable.png)
 
+In this lesson, we will:
+
+- Create DB structure for Customers: Model/Migration
+- Create Factories/Seeds for testing data
+- Generate Filament Resource directly from the DB structure
+- Hide the `deleted_at` column from the table
+- Merge `first_name` and `last_name` into one table column
+
+---
+
 We will have the following fields in our Customer resource:
 
 - `id`
