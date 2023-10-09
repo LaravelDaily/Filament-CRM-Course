@@ -110,7 +110,7 @@ public static function table(Table $table): Table
         ])
         ->actions([
             Tables\Actions\EditAction::make(),
-            Tables\Actions\Action::make('Edit Pipeline Stage/notes')// [tl! add:start]
+            Tables\Actions\Action::make('Move to Stage')// [tl! add:start]
                 ->icon('heroicon-m-pencil-square')
                 ->form([
                     Forms\Components\Select::make('pipeline_stage_id')
