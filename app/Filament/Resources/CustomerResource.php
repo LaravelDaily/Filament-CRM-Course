@@ -85,7 +85,7 @@ class CustomerResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\Action::make('Edit Pipeline Stage/notes')
+                Tables\Actions\Action::make('Move to Stage')
                     ->icon('heroicon-m-pencil-square')
                     ->form([
                         Forms\Components\Select::make('pipeline_stage_id')
