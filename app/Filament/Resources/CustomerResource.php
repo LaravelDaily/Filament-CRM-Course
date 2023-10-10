@@ -8,6 +8,10 @@ use App\Models\Customer;
 use App\Models\PipelineStage;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Infolists\Components\Section;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Components\ViewEntry;
+use Filament\Infolists\Infolist;
 use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -118,12 +122,48 @@ class CustomerResource extends Resource
                     return null;
                 }
 
-                return Pages\EditCustomer::getUrl([$record->id]);
+                return Pages\ViewCustomer::getUrl([$record->id]);
             })
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
+            ]);
+    }
+
+    public static function infoList(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->schema([
+                Section::make('Personal Information')
+                    ->schema([
+                        TextEntry::make('first_name'),
+                        TextEntry::make('last_name'),
+                    ])
+                    ->columns(),
+                Section::make('Contact Information')
+                    ->schema([
+                        TextEntry::make('email'),
+                        TextEntry::make('phone_number'),
+                    ])
+                    ->columns(),
+                Section::make('Additional Details')
+                    ->schema([
+                        TextEntry::make('description'),
+                    ]),
+                Section::make('Lead and Stage Information')
+                    ->schema([
+                        TextEntry::make('leadSource.name'),
+                        TextEntry::make('pipelineStage.name'),
+                    ])
+                    ->columns(),
+                Section::make('Pipeline Stage History and Notes')
+                    ->schema([
+                        ViewEntry::make('pipelineStageLogs')
+                            ->label('')
+                            ->view('infolists.components.pipeline-stage-history-list')
+                    ])
+                    ->collapsible()
             ]);
     }
 
@@ -140,6 +180,7 @@ class CustomerResource extends Resource
             'index' => Pages\ListCustomers::route('/'),
             'create' => Pages\CreateCustomer::route('/create'),
             'edit' => Pages\EditCustomer::route('/{record}/edit'),
+            'view' => Pages\ViewCustomer::route('/{record}'),
         ];
     }
 }
