@@ -5,9 +5,11 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\CustomerResource\Pages;
 use App\Filament\Resources\CustomerResource\RelationManagers;
 use App\Models\Customer;
+use App\Models\CustomField;
 use App\Models\PipelineStage;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
 use Filament\Infolists\Components\RepeatableEntry;
 use Filament\Infolists\Components\Section;
 use Filament\Infolists\Components\TextEntry;
@@ -74,7 +76,31 @@ class CustomerResource extends Resource
                                 Forms\Components\Textarea::make('comments'),
                             ])
                             ->columns()
-                    ])
+                    ]),
+                Forms\Components\Section::make('Additional fields')
+                    ->schema([
+                        Forms\Components\Repeater::make('fields')
+                            ->hiddenLabel()
+                            ->relationship('customFields')
+                            ->schema([
+                                Forms\Components\Select::make('custom_field_id')
+                                    ->label('Field Type')
+                                    ->options(CustomField::pluck('name', 'id')->toArray())
+                                    ->disableOptionWhen(function ($value, $state, Get $get) {
+                                        return collect($get('../*.custom_field_id'))
+                                            ->reject(fn($id) => $id === $state)
+                                            ->filter()
+                                            ->contains($value);
+                                    })
+                                    ->required()
+                                    ->searchable()
+                                    ->live(),
+                                Forms\Components\TextInput::make('value')
+                                    ->required()
+                            ])
+                            ->addActionLabel('Add another Field')
+                            ->columns(),
+                    ]),
             ]);
     }
 
@@ -182,6 +208,16 @@ class CustomerResource extends Resource
                         TextEntry::make('leadSource.name'),
                         TextEntry::make('pipelineStage.name'),
                     ])
+                    ->columns(),
+                Section::make('Additional fields')
+                    ->hidden(fn($record) => $record->customFields->isEmpty())
+                    ->schema(
+                        fn($record) => $record->customFields->map(function ($customField) {
+                            return TextEntry::make($customField->customField->name)
+                                ->label($customField->customField->name)
+                                ->default($customField->value);
+                        })->toArray()
+                    )
                     ->columns(),
                 Section::make('Documents')
                     ->hidden(fn($record) => $record->customerDocuments->isEmpty())
