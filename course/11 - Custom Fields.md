@@ -1,6 +1,6 @@
 Quite often, CRMs do not fit in the pre-defined fields. This is where Custom Fields come in handy, as they allow users to set up their own fields for the CRM and fill Customer profiles with them:
 
-// @todo image
+![](https://laraveldaily.com/uploads/2023/10/customFieldsCRUD2.png)
 
 In this lesson, we will do the following:
 
@@ -123,7 +123,7 @@ php artisan migrate:fresh --seed
 
 Should now give us a few Custom Fields in the database:
 
-![](./images2/customFieldsDatabaseExample.png)
+![](https://laraveldaily.com/uploads/2023/10/customFieldsDatabaseExample.png)
 
 ---
 
@@ -153,7 +153,7 @@ class CustomFieldResource extends Resource
 
 That's it. We have our Custom Field CRUD in the Settings group:
 
-![](./images2/customFieldsCRUD.png)
+![](https://laraveldaily.com/uploads/2023/10/customFieldsCRUD.png)
 
 ---
 
@@ -252,7 +252,7 @@ public static function form(Form $form): Form
 
 That's it! We will now have a new section in the Customer Resource form where we can add Custom Fields:
 
-![](./images2/customFieldsCRUD2.png)
+![](https://laraveldaily.com/uploads/2023/10/customFieldsCRUD2.png)
 
 ---
 
@@ -332,6 +332,6 @@ public static function infoList(Infolist $infolist): Infolist
 
 With this addition, we used the Collections map method to create a new array from our Custom Fields list. This allows us to display any number of Custom Fields without hardcoding them. We will also hide the section if our Customer has no custom fields. Here's what the View looks like:
 
-![](./images2/customFieldsView.png)
+![](https://laraveldaily.com/uploads/2023/10/customFieldsView.png)
 
 That's it for this lesson! We now have a fully working Custom Fields system that allows us to add any number of fields to our Customers.

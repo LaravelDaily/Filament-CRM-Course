@@ -1,6 +1,6 @@
 Currently, we have Customers and Pipeline Stages in our system. Still, there is no easy way to move our Customers within the Pipeline while saving its history. Let's fix that by adding a table Action:
 
-![](./images2/customerMoveToStageButton.png)
+![](https://laraveldaily.com/uploads/2023/10/customerMoveToStageButton.png)
 
 In this lesson, we will do the following:
 
@@ -150,7 +150,7 @@ Few things to note here:
 
 Here's what this looks like in the UI:
 
-![](./images2/customerMoveToStageButton.png)
+![](https://laraveldaily.com/uploads/2023/10/customerMoveToStageButton.png)
 
 ---
 

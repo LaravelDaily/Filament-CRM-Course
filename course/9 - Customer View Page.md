@@ -1,6 +1,6 @@
 Next, we want to build an info list (View) page for our Customers. This page has to display all the information we have on our Customer along with a list of Pipeline Status logs:
 
-![](./images2/customerViewExample2.png)
+![](https://laraveldaily.com/uploads/2023/10/customerViewExample2.png)
 
 In this lesson, we will do the following:
 
@@ -74,7 +74,7 @@ public static function getPages(): array
 
 Now you should be able to open the table and click on a row to view the Customer's details:
 
-![](./images2/customerViewExample.png)
+![](https://laraveldaily.com/uploads/2023/10/customerViewExample.png)
 
 All of these fields were auto-guessed by Filament and displayed as is from the Form definition. We can customize them by using the `infoList()` method. Let's do that now.
 
@@ -136,7 +136,7 @@ public static function infoList(Infolist $infolist): Infolist
 
 If you try to load the page - you will see that we have an error:
 
-![](./images2/customerViewError.png)
+![](https://laraveldaily.com/uploads/2023/10/customerViewError.png)
 
 This is due to us using `ViewEntry` and not having a defined view. Let's create one now:
 
@@ -167,7 +167,7 @@ This is due to us using `ViewEntry` and not having a defined view. Let's create 
 
 Now, if we reload the page, we should see a nicer design for our View plus Pipeline Stage History:
 
-![](./images2/customerViewExample2.png)
+![](https://laraveldaily.com/uploads/2023/10/customerViewExample2.png)
 
 That's it! We have our View page ready.
 

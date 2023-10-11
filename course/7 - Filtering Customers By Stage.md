@@ -1,6 +1,6 @@
 Since our Customer table can have thousands of entries - we need a way to filter them by something. In our case, we will filter them by their Pipeline Stage like this:
 
-![](./images2/customerTableFilters.png)
+![](https://laraveldaily.com/uploads/2023/10/customerTableFilters.png)
 
 In this lesson, we will do the following:
 
@@ -52,7 +52,7 @@ class ListCustomers extends ListRecords
 
 Once this code is done, we should see tabs appearing above our table:
 
-![](./images2/customerTableFilters.png)
+![](https://laraveldaily.com/uploads/2023/10/customerTableFilters.png)
 
 But what did we do here? Let's look at the code again with some comments:
 

@@ -1,6 +1,6 @@
 Our Customer needs some documents to be uploaded. These can range from simple information sheets to signed PDF documents. We need to be able to upload them and add notes to them, just like this:
 
-![](./images2/customerDocumentsFormExample2.png)
+![](https://laraveldaily.com/uploads/2023/10/customerDocumentsFormExample2.png)
 
 In this lesson, we will do the following:
 
@@ -139,7 +139,7 @@ public static function form(Form $form): Form
 
 Adding this Section with Repeater quickly gives us the following:
 
-![](./images2/customerDocumentsFormExample.png)
+![](https://laraveldaily.com/uploads/2023/10/customerDocumentsFormExample.png)
 
 But we can all agree that this form needs a bit of a face-lift, so let's do that:
 **app/Filament/Resources/CustomerResource.php**
@@ -225,7 +225,7 @@ public static function form(Form $form): Form
 
 This face-lift moved the fields around and added cleaner sections for better separation. The result is the following:
 
-![](./images2/customerDocumentsFormExample2.png)
+![](https://laraveldaily.com/uploads/2023/10/customerDocumentsFormExample2.png)
 
 Which is much cleaner and easier to use.
 
@@ -302,7 +302,7 @@ public static function infoList(Infolist $infolist): Infolist
 
 Opening the Customer view page will now show the Documents section (as long as you have a Document uploaded):
 
-![](./images2/customerDocumentsViewExample.png)
+![](https://laraveldaily.com/uploads/2023/10/customerDocumentsViewExample.png)
 
 ---
 

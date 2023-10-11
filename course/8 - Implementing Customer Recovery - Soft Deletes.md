@@ -1,6 +1,6 @@
 Sometimes, your Customer might get deleted for various reasons, but you might need to recover him months later. This is why we are going to create an `Archived` tab with a `Restore` button:
 
-![](./images2/customersArchivedTabRestore.png)
+![](https://laraveldaily.com/uploads/2023/10/customersArchivedTabRestore.png)
 
 In this lesson, we will do the following:
 
@@ -44,7 +44,7 @@ public static function table(Table $table): Table
 
 That's it. Now we have a delete button in our table:
 
-![](./images2/customersDeleteButton.png)
+![](https://laraveldaily.com/uploads/2023/10/customersDeleteButton.png)
 
 ---
 
@@ -87,7 +87,7 @@ public function getTabs(): array
 
 This will add an `Archived` tab to our table:
 
-![](./images2/customersArchivedTab.png)
+![](https://laraveldaily.com/uploads/2023/10/customersArchivedTab.png)
 
 We currently have 2 Customers here, but as you can see - there is an Edit button and a Move to Stage button. We don't want that, so let's hide them on this tab:
 
@@ -128,13 +128,13 @@ public static function table(Table $table): Table
 
 We have now hidden the Edit and Move to Stage buttons by adding a condition to check if they are `trashed` or not. This gives us the following result:
 
-![](./images2/customersArchivedTabHiddenButtons.png)
+![](https://laraveldaily.com/uploads/2023/10/customersArchivedTabHiddenButtons.png)
 
 ### Disabling Row Actions on Archived Tab
 
 If you visit the `Archived` tab and click on a row, you will get an error like this:
 
-![](./images2/customersArchivedTabRowClickError.png)
+![](https://laraveldaily.com/uploads/2023/10/customersArchivedTabRowClickError.png)
 
 This happens because we have deleted the record previously, but now we are trying to edit it. To prevent this, we can add the following code to our table:
 
@@ -219,11 +219,11 @@ public static function table(Table $table): Table
 
 This will add the button to the end of the table:
 
-![](./images2/customersArchivedTabRestoreButton.png)
+![](https://laraveldaily.com/uploads/2023/10/customersArchivedTabRestoreButton.png)
 
 And if you are wondering why we did not add `->hidden(...)` to the button - Filament handles that for us. If the record is not `trashed` - the button will not be shown:
 
-![](./images2/customersArchivedTabRestoreButtonHidden.png)
+![](https://laraveldaily.com/uploads/2023/10/customersArchivedTabRestoreButtonHidden.png)
 
 ---
 
