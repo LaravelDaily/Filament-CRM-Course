@@ -160,8 +160,13 @@ class CustomerResource extends Resource
                     ])
                     ->action(function (Customer $customer, array $data): void {
                         $customer->pipeline_stage_id = $data['pipeline_stage_id'];
-                        $customer->temporary_notes_field = $data['notes'];
                         $customer->save();
+
+                        $customer->pipelineStageLogs()->create([
+                            'pipeline_stage_id' => $data['pipeline_stage_id'],
+                            'notes' => $data['notes'],
+                            'user_id' => auth()->id()
+                        ]);
 
                         Notification::make()
                             ->title('Customer Pipeline Updated')

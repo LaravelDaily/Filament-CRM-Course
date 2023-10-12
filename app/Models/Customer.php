@@ -33,17 +33,6 @@ class Customer extends Model
                 'user_id' => auth()->check() ? auth()->id() : null
             ]);
         });
-
-        self::updating(function (Customer $customer) {
-            if ($customer->isDirty(['status', 'temporary_notes_field'])) {
-                $customer->pipelineStageLogs()->create([
-                    'pipeline_stage_id' => $customer->pipeline_stage_id,
-                    'notes' => $customer->temporary_notes_field,
-                    'user_id' => auth()->check() ? auth()->id() : null
-                ]);
-                unset($customer->attributes['temporary_notes_field']);
-            }
-        });
     }
 
     public function leadSource(): BelongsTo

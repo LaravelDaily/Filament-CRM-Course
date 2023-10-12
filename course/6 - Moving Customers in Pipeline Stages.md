@@ -125,8 +125,13 @@ public static function table(Table $table): Table
                 ])
                 ->action(function (Customer $customer, array $data): void {
                     $customer->pipeline_stage_id = $data['pipeline_stage_id'];
-                    $customer->temporary_notes_field = $data['notes'];
                     $customer->save();
+
+                    $customer->pipelineStageLogs()->create([
+                        'pipeline_stage_id' => $data['pipeline_stage_id'],
+                        'notes' => $data['notes'],
+                        'user_id' => auth()->id()
+                    ]);
 
                     Notification::make()
                         ->title('Customer Pipeline Updated')
@@ -170,30 +175,15 @@ public static function booted(): void
             'user_id' => auth()->check() ? auth()->id() : null
         ]);
     });
-
-    self::updating(function (Customer $customer) {
-        if ($customer->isDirty(['status', 'temporary_notes_field'])) {
-            $customer->pipelineStageLogs()->create([
-                'pipeline_stage_id' => $customer->pipeline_stage_id,
-                'notes' => $customer->temporary_notes_field,
-                'user_id' => auth()->check() ? auth()->id() : null
-            ]);
-            unset($customer->attributes['temporary_notes_field']);
-        }
-    });
 }
 
 // ...
 ```
 
-This is going to listen for create and update events. Here's what it will do for each event:
+This is going to listen for create event and do the following:
 
-Create:
 - Create a new `CustomerPipelineStage` record with the `pipeline_stage_id` and `user_id` (if logged in) from the Customer.
 
-Update:
-- If the `status` or `temporary_notes_field` fields are dirty, create a new `CustomerPipelineStage` record with the `pipeline_stage_id`, `notes` and `user_id` (if logged in) from the Customer.
-
-Remember that the `temporary_notes_field` does not exist on the Model, so we need to unset it from the attributes array. Otherwise, it will throw an error.
+---
 
 That's it. In the next lesson, we will build the table filters.
