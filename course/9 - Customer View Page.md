@@ -14,6 +14,12 @@ In this lesson, we will do the following:
 
 Let's get to work and create a new file for our View:
 
+```bash
+php artisan make:filament-page ViewCustomer --resource=CustomerResource --type=ViewRecord
+```
+
+This should create the following file:
+
 **app/Filament/Resources/CustomerResource/Pages/ViewCustomer.php**
 ```php
 namespace App\Filament\Resources\CustomerResource\Pages;
