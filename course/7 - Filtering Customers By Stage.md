@@ -1,20 +1,20 @@
-Since our Customer table can have thousands of entries - we need a way to filter them by something. In our case, we will filter them by their Pipeline Stage like this:
+Since our Customer table can have thousands of entries - we need a way to filter them by something. In our case, we will create tabs to group them by their Pipeline Stage like this:
 
 ![](https://laraveldaily.com/uploads/2023/10/customerTableFilters.png)
 
 In this lesson, we will do the following:
 
-- Create a new filter called `All` to show all Customers
-- Dynamically create filters for each Pipeline Stage
-- Add counters to each filter to show how many Customers are in each filter
+- Create a new tab called `All` to show all Customers
+- Dynamically create tabs for each Pipeline Stage
+- Add counters to each tab to show how many Customers are in each group
 
 Let's get started!
 
 ---
 
-## Creating the Filters
+## Creating the Tabs
 
-To make filters, we will modify our List file:
+To make tabs, we will modify our List file:
 
 **app/Filament/Resources/CustomerResource/Pages/ListCustomers.php** 
 ```php
@@ -86,7 +86,7 @@ public function getTabs(): array
 }
 ```
 
-That's it! This is all we had to do for the filters to work.
+That's it! This is all we had to do for the tabs to work.
 
 ---
 
