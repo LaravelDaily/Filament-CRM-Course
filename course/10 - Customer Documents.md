@@ -119,8 +119,8 @@ public static function form(Form $form): Form
                 // This will make the section visible only on the edit page
                 ->visibleOn('edit')
                 ->schema([
-                    Forms\Components\Repeater::make('customerDocuments')
-                        ->relationship('customerDocuments')
+                    Forms\Components\Repeater::make('documents')
+                        ->relationship('documents')
                         ->hiddenLabel()
                         ->reorderable(false)
                         ->addActionLabel('Add Document')
@@ -205,8 +205,8 @@ public static function form(Form $form): Form
                 // This will make the section visible only on the edit page
                 ->visibleOn('edit')
                 ->schema([
-                    Forms\Components\Repeater::make('customerDocuments')
-                        ->relationship('customerDocuments')
+                    Forms\Components\Repeater::make('documents')
+                        ->relationship('documents')
                         ->hiddenLabel()
                         ->reorderable(false)
                         ->addActionLabel('Add Document')
@@ -271,9 +271,9 @@ public static function infoList(Infolist $infolist): Infolist
                 ->columns(),
             Section::make('Documents')// [tl! add:start]
                 // This will hide the section if there are no documents
-                ->hidden(fn($record) => $record->customerDocuments->isEmpty())
+                ->hidden(fn($record) => $record->documents->isEmpty())
                 ->schema([
-                    RepeatableEntry::make('customerDocuments')
+                    RepeatableEntry::make('documents')
                         ->hiddenLabel()
                         ->schema([
                             TextEntry::make('file_path')

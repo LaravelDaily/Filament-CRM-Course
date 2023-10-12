@@ -65,8 +65,8 @@ class CustomerResource extends Resource
                 Forms\Components\Section::make('Documents')
                     ->visibleOn('edit')
                     ->schema([
-                        Forms\Components\Repeater::make('customerDocuments')
-                            ->relationship('customerDocuments')
+                        Forms\Components\Repeater::make('documents')
+                            ->relationship('documents')
                             ->hiddenLabel()
                             ->reorderable(false)
                             ->addActionLabel('Add Document')
@@ -220,9 +220,9 @@ class CustomerResource extends Resource
                     )
                     ->columns(),
                 Section::make('Documents')
-                    ->hidden(fn($record) => $record->customerDocuments->isEmpty())
+                    ->hidden(fn($record) => $record->documents->isEmpty())
                     ->schema([
-                        RepeatableEntry::make('customerDocuments')
+                        RepeatableEntry::make('documents')
                             ->hiddenLabel()
                             ->schema([
                                 TextEntry::make('file_path')

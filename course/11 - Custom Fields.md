@@ -205,8 +205,8 @@ public static function form(Form $form): Form
             Forms\Components\Section::make('Documents')
                 ->visibleOn('edit')
                 ->schema([
-                    Forms\Components\Repeater::make('customerDocuments')
-                        ->relationship('customerDocuments')
+                    Forms\Components\Repeater::make('documents')
+                        ->relationship('documents')
                         ->hiddenLabel()
                         ->reorderable(false)
                         ->addActionLabel('Add Document')
@@ -302,9 +302,9 @@ public static function infoList(Infolist $infolist): Infolist
                 )
                 ->columns(),// [tl! add:end]
             Section::make('Documents')
-                ->hidden(fn($record) => $record->customerDocuments->isEmpty())
+                ->hidden(fn($record) => $record->documents->isEmpty())
                 ->schema([
-                    RepeatableEntry::make('customerDocuments')
+                    RepeatableEntry::make('documents')
                         ->hiddenLabel()
                         ->schema([
                             TextEntry::make('file_path')
