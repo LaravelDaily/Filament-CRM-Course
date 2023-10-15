@@ -1,4 +1,4 @@
-Sometimes, your Customer might get deleted for various reasons, but you might need to recover him months later. This is why we are going to create an `Archived` tab with a `Restore` button:
+Sometimes, your Customer might get deleted for various reasons, but you might need to recover them months later. In Laravel, it's about `SoftDeletes`, but in the Filament version, we will show it as an `Archived` tab with a `Restore` button:
 
 ![](https://laraveldaily.com/uploads/2023/10/customersArchivedTabRestore.png)
 
