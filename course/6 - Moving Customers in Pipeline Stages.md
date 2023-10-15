@@ -5,6 +5,7 @@ Currently, we have Customers and Pipeline Stages in our system. Still, there is 
 In this lesson, we will do the following:
 
 - Create a `CustomerPipelineStage` Model to save the history of the Customer's Pipeline Stage changes and any comments added.
+- Add a custom Table Action to move customers to other pipeline stages.
 - Add creating and updating action Observers to our Customer Model to save the history.
 
 ---
