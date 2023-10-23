@@ -8,8 +8,17 @@
                         theme: $store.theme,
                     }">{{ $pipelineLog->created_at->diffForHumans() }}</span>
             </div>
-            <div class="">
-                <span class="font-bold">Pipeline Stage:</span> {{ $pipelineLog->pipelineStage->name }}
+            <div class="flex flex-col">
+                @if($pipelineLog->pipelineStage)
+                    <p>
+                        <span class="font-bold">Pipeline Stage:</span> {{ $pipelineLog->pipelineStage?->name }}
+                    </p>
+                @endif
+                @if($pipelineLog->employee)
+                    <p>
+                        <span class="font-bold">Assigned Employee:</span> {{ $pipelineLog->employee?->name }}
+                    </p>
+                @endif
             </div>
             @if($pipelineLog->notes)
                 <div class="">

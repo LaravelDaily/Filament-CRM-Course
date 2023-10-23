@@ -28,6 +28,11 @@ class ListCustomers extends ListRecords
         $tabs['all'] = Tab::make('All Customers')
             ->badge(Customer::count());
 
+        if (!auth()->user()->isAdmin()) {
+            $tabs['my'] = Tab::make('My Customers')
+                ->badge(Customer::where('employee_id', auth()->id())->count());
+        }
+
         $pipelineStages = PipelineStage::orderBy('position')->withCount('customers')->get();
 
         foreach ($pipelineStages as $pipelineStage) {

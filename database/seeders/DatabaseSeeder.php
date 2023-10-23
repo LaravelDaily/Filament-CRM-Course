@@ -7,6 +7,7 @@ use App\Models\Customer;
 use App\Models\CustomField;
 use App\Models\LeadSource;
 use App\Models\PipelineStage;
+use App\Models\Role;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -18,9 +19,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $roles = [
+            'Admin',
+            'Employee'
+        ];
+
+        foreach ($roles as $role) {
+            Role::create(['name' => $role]);
+        }
+
         User::factory()->create([
             'name' => 'Test Admin',
             'email' => 'admin@admin.com',
+            'role_id' => Role::where('name', 'Admin')->first()->id,
+        ]);
+
+        User::factory()->count(10)->create([
+            'role_id' => Role::where('name', 'Employee')->first()->id,
         ]);
 
         $leadSources = [
