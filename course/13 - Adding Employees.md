@@ -1,20 +1,20 @@
-Next on our list - separating user roles. In our system we need admins to manage the system settings and employees, while the employees themselves can only manage customers and nothing else:
+Next on our list - separating user roles. In our system, we need admins to manage the system settings and employees, while the employees themselves can only manage customers and nothing else:
 
 ![](https://laraveldaily.com/uploads/2023/10/employeeViewsCustomerList.png)
 
 In this lesson, we will do the following:
 
 - Create roles Model and Database structure
-- Create users management page (CRUD)
-- Add employees to our Customers table and form for admins to manage
+- Create a user management page (CRUD)
+- Add employees to our Customers' table and form for admins to manage
 - Add employee changes to our customer history
-- Add additional tab in Customers for `My Customers` - customers assigned to the employee
+- Add an additional tab in Customers for `My Customers` - customers assigned to the employee
 
 ---
 
 ## Creating Roles Model and Database structure
 
-Let's start by creation our migration file:
+Let's start by creating our migration file:
 
 **Migration**
 ```php
@@ -25,7 +25,7 @@ Schema::create('roles', function (Blueprint $table) {
 });
 ```
 
-Then we can fill out our Model:
+Then, we can fill out our Model:
 
 **app/Models/Role.php**
 ```php
@@ -62,7 +62,7 @@ That's it for our basic Role setup. We now have a table with two roles - Admin a
 
 ## Creating Users Resource
 
-Next on our list - the User management. Let's start by adding a new column to users table and relating it to our Role model:
+Next on our list - the User management. Let's start by adding a new column to the users' table and relating it to our Role model:
 
 **Migration**
 ```php
@@ -75,7 +75,7 @@ Schema::table('users', function (Blueprint $table) {
 });
 ```
 
-Then let's add a relationship and a simple `isAdmin` check to our Model:
+Then, let's add a relationship and a simple `isAdmin` check to our Model:
 
 **app/Models/User.php**
 ```php
@@ -128,7 +128,7 @@ public function run(): void
 }
 ```
 
-Then we can finally create our CRUD resource:
+Then, we can finally create our CRUD resource:
 
 ```bash 
 php artisan make:filament-resource User --generate
@@ -228,7 +228,7 @@ Schema::table('customers', function (Blueprint $table) {
 });
 ```
 
-Then in our Customer model we can add a relationship:
+Then, in our Customer model, we can add a relationship:
 
 **app/Models/Customer.php**
 ```php
@@ -304,7 +304,7 @@ And once an Employee is selected - we can see that employee in our Customers lis
 
 ## Adding Employee Changes to Customer History
 
-We need to add our Employee changes to our Customer History, as that is an important piece of information to know, in case there is some mix-up. So let's start by adding a new column to our history table:
+We need to add our Employee changes to our Customer History, as that is essential information to know in case of some mix-up. So, let's start by adding a new column to our history table:
 
 **Migration**
 ```php
@@ -317,7 +317,7 @@ Schema::table('customer_pipeline_stages', function (Blueprint $table) {
 });
 ```
 
-Then we can add a relationship to our History model:
+Then, we can add a relationship to our History model:
 
 **app/Models/CustomerPipelineStage.php**
 ```php
@@ -355,7 +355,7 @@ public static function booted(): void
     self::updated(function (Customer $customer) {// [tl! add:start]
         $lastLog = $customer->pipelineStageLogs()->whereNotNull('employee_id')->latest()->first();
 
-        // Here we will check if the employee has changed and if so - add a new log
+        // Here, we will check if the employee has changed, and if so - add a new log
         if ($customer->employee_id !== $lastLog) {
             $customer->pipelineStageLogs()->create([
                 'employee_id' => $customer->employee_id,
@@ -367,7 +367,7 @@ public static function booted(): void
 }
 ```
 
-Now of course, we need to display this information in our History list:
+Now, of course, we need to display this information in our History list:
 
 **resources/views/infolists/components/pipeline-stage-history-list.blade.php**
 ```blade
@@ -406,17 +406,17 @@ Now of course, we need to display this information in our History list:
 </x-dynamic-component>
 ```
 
-Now, if we update our Customer and assign employee (or change it) - we should get a log entry like this:
+Now, if we update our Customer and assign an employee (or change it) - we should get a log entry like this:
 
 ![](https://laraveldaily.com/uploads/2023/10/employeeHistory.png)
 
-That's it, now we have a full history of our Customer changes.
+That's it, now we have an entire history of our Customer changes.
 
 ---
 
 ## Limiting Employee Access
 
-Now that we can assign employees and see the history - we should work on our employees access. Right now, if they were to access the panel - we would see everything:
+Now that we can assign employees and see the History - we should work on our employees' access. Right now, if they were to access the panel - we would see everything:
 
 ![](https://laraveldaily.com/uploads/2023/10/employeeAccessSeesTooMuch.png)
 
@@ -430,7 +430,7 @@ php artisan make:policy TagPolicy --model=Tag
 php artisan make:policy UserPolicy --model=User
 ```
 
-Then we can modify our policies: 
+Then, we can modify our policies: 
 
 **Note:** We will apply the same code to all policies. We only need the `viewAny()` method at this point
 
@@ -525,4 +525,4 @@ Once this is added, our Customers will see a new tab:
 
 ---
 
-In next lesson, we will modify our Employee creation process to send an invitation to a custom registration page.
+In the next lesson, we will modify our Employee creation process to send an invitation to a custom registration page.
