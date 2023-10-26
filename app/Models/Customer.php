@@ -82,4 +82,19 @@ class Customer extends Model
     {
         return $this->belongsTo(User::class, 'employee_id');
     }
+
+    public function tasks(): HasMany
+    {
+        return $this->hasMany(Task::class);
+    }
+
+    public function completedTasks(): HasMany
+    {
+        return $this->hasMany(Task::class)->where('is_completed', true);
+    }
+
+    public function incompleteTasks(): HasMany
+    {
+        return $this->hasMany(Task::class)->where('is_completed', false);
+    }
 }
