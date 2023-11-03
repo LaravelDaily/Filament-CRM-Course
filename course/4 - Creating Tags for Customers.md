@@ -340,6 +340,10 @@ This view accepts a `$tags` list and simply displays a nice button colored with 
 public static function table(Table $table): Table
 {
     return $table
+        ->modifyQueryUsing(function ($query) {// [tl! add:start]
+            // Here we are eager loading our tags to prevent N+1 issue
+            return $query->with('tags');
+        })// [tl! add:end]
         ->columns([
             Tables\Columns\TextColumn::make('first_name')
                 ->label('Name')
