@@ -227,7 +227,14 @@ class CustomerResource extends Resource
             })
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\DeleteBulkAction::make()
+                        ->hidden(function (Pages\ListCustomers $livewire) {
+                            return $livewire->activeTab == 'archived';
+                        }),
+                    Tables\Actions\RestoreBulkAction::make()
+                        ->hidden(function (Pages\ListCustomers $livewire) {
+                            return $livewire->activeTab != 'archived';
+                        }),
                 ]),
             ]);
     }
