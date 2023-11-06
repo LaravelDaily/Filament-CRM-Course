@@ -210,7 +210,14 @@ public static function table(Table $table): Table
                 }),
         ])
         ->bulkActions([
-           // ...
+            Tables\Actions\DeleteBulkAction::make()// [tl! add:start]
+                ->hidden(function (Pages\ListCustomers $livewire) {
+                    return $livewire->activeTab == 'archived';
+                }),
+            Tables\Actions\RestoreBulkAction::make()
+                ->hidden(function (Pages\ListCustomers $livewire) {
+                    return $livewire->activeTab != 'archived';
+                }),// [tl! add:end]
         ]);
 }
 
