@@ -10,6 +10,7 @@ use App\Models\PipelineStage;
 use App\Models\Product;
 use App\Models\Role;
 use App\Models\Tag;
+use App\Models\Task;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -91,12 +92,19 @@ class DatabaseSeeder extends Seeder
         }
 
         $defaultPipelineStage = PipelineStage::where('is_default', true)->first()->id;
+        $allStages = PipelineStage::pluck('id');
+        $allEmployees = User::where('role_id', Role::where('name', 'Employee')->first()->id)->pluck('id');
         Customer::factory()
             ->count(10)
+            ->has(Task::factory()->count(3))
             ->create([
                 'pipeline_stage_id' => $defaultPipelineStage,
             ])
-            ->each(function (Customer $customer) {
+            ->each(function (Customer $customer) use ($allEmployees, $allStages) {
+                $customer->pipeline_stage_id = $allStages->random();
+                $customer->employee_id = $allEmployees->random();
+                $customer->save();
+
                 $customer->tags()->attach(random_int(1, 2));
             });
 
