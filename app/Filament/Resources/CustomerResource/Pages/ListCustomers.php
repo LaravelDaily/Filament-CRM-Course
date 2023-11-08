@@ -30,7 +30,10 @@ class ListCustomers extends ListRecords
 
         if (!auth()->user()->isAdmin()) {
             $tabs['my'] = Tab::make('My Customers')
-                ->badge(Customer::where('employee_id', auth()->id())->count());
+                ->badge(Customer::where('employee_id', auth()->id())->count())
+                ->modifyQueryUsing(function ($query) {
+                    return $query->where('employee_id', auth()->id());
+                });
         }
 
         $pipelineStages = PipelineStage::orderBy('position')->withCount('customers')->get();
