@@ -54,7 +54,6 @@ class AcceptInvitation extends SimplePage
                     ->password()
                     ->required()
                     ->rule(Password::default())
-                    ->dehydrateStateUsing(fn($state) => Hash::make($state))
                     ->same('passwordConfirmation')
                     ->validationAttribute(__('filament-panels::pages/auth/register.form.password.validation_attribute')),
                 TextInput::make('passwordConfirmation')
@@ -72,7 +71,7 @@ class AcceptInvitation extends SimplePage
 
         $user = User::create([
             'name' => $this->form->getState()['name'],
-            'password' => Hash::make($this->form->getState()['password']),
+            'password' => $this->form->getState()['password'],
             'email' => $this->invitationModel->email,
             'role_id' => Role::where('name', 'Employee')->first()->id
         ]);
